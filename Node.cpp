@@ -6,10 +6,11 @@
 using namespace std;
 
 Node::Node() {
-
+    visited=false;
 }
 Node::Node(Coordinate *p) {
     myLocation = p;
+    visited=false;
 }
 Coordinate* Node::getLocation() {
     return myLocation;

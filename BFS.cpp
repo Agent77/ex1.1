@@ -50,7 +50,7 @@ void BFS::visitNeighbors(Node& n) {//TODO this belongs to graph, not BFS
     (graph)->print();
     Node* neighbors = (*(graph)).getNeighbors(&n);
     int i;
-    for ( i = 0; i < sizeof(neighbors); i++) {
+    for ( i = 0; i < sizeof(neighbors)/4; i++) {
         if (!(neighbors[i].isVisited())) {
             neighbors[i].visit();
             neighbors[i].setPrev(n); //TODO do anyway
