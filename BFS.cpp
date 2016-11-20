@@ -34,14 +34,14 @@ void BFS::PrintPath( Node source, Node destination) {
 void BFS::getPath() {
     Node* newSource;
     Coordinate *c1, *c2;
-    myQueue.push(source);
-    newSource = &myQueue.front();
+    myQueue.push(&source);
+    newSource = myQueue.front();
     do {
         visitNeighbors(*newSource);
         if (!myQueue.empty()) {
             myQueue.pop(); //TODO erases wrong one!
         }
-        newSource = &myQueue.front();
+        newSource = myQueue.front();
          //Points to next Node in queue
         *c1=*newSource->getLocation();
         *c2=*destination.getLocation();
@@ -57,7 +57,7 @@ void BFS::visitNeighbors(Node& n) {//TODO this belongs to graph, not BFS
         if (!(neighbors[i].isVisited())) {
             neighbors[i].visit();
             neighbors[i].setPrev(n); //TODO do anyway
-            myQueue.push(neighbors[i]);
+            myQueue.push(&neighbors[i]);
         }
         else {
             neighbors[i].setPrev(n);
