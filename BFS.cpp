@@ -1,80 +1,89 @@
-
-
 #include "BFS.h"
+
 using namespace std;
 
-BFS::BFS(Node s, Node d, queue<Node*> &q) {
-    source = s;
-    source.setPrev(s);
-    destination = d;
-    for(int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            graph[i][j] = Node(Point(i,j));
-        }
-    }
+BFS::BFS(int x, int y, Coordinate s, Coordinate d) {
+    xsize = &x;
+    ysize = &y;
+    source = Node(s);
+    source.visit();
+    destination = Node(d);
+    Node node = Node();
+    source.setPrev(node);
+}
+void BFS::setGraph(Graph g) {//Set based off of input
+    graph = &g;
 }
 
-void BFS::PrintPath(Node source, Node destination) {
-    Point path[100] = {};
+void BFS::PrintPath( Node source, Node destination) {
+    Coordinate* path[100] = {};
     int count = 0;
-    Node currentNode = destination;
-    path[count] = (currentNode.getLocation());
+    Node* currentNode = &destination;
+    path[count] = ((*(currentNode)).getLocation());
     count++;
-    while (!(((currentNode.getLocation() == source.getLocation())))) {
-        currentNode = (*(currentNode.getPrev()));
-        path[count] = (currentNode).getLocation();
+    while (!(((*(currentNode)).getLocation()->equalTo(source.getLocation())))) {
+        currentNode = ((*(graph)).getLocationOfPrev(currentNode));//&(graph[(*(currentNode)).getPrev()->getLocation().getX()][(*(currentNode)).getPrev()->getLocation().getY()]);
+        path[count] = (*(currentNode)).getLocation();
         count++;
-    } //DOESNT BREAK OUT!!
+    }
     //path[count] = source.getLocation();
     for(int i = count - 1; i >= 0; i--) {
-        cout<<path[i]<<endl;
+        //cout<<path[i]<<endl;
     }
 }
 void BFS::getPath() {
-    Node* newSource = &source;
-    myQueue.push(newSource);
+    Node* newSource;
+    myQueue.push(source);
+    newSource = &myQueue.front();
     do {
-        newSource->visit();
         visitNeighbors(*newSource);
         if (!myQueue.empty()) {
-            myQueue.pop();
+            myQueue.pop(); //TODO erases wrong one!
         }
-        newSource = myQueue.front(); //Points to next Node in queue
-    } while(!((*(newSource)).getLocation() == destination.getLocation()));
-    BFS::PrintPath(source, destination);
+        newSource = &myQueue.front();
+         //Points to next Node in queue
+} while(!((*(newSource)).getLocation()->equalTo(destination.getLocation())));
+BFS::PrintPath(source, destination);
 
 }
-void BFS::visitNeighbors(Node& n) {
-    Node* neighbors;
-    if (((n.getLocation().getX())- 1) >= 0) {
-        neighbors = &(graph[(n.getLocation().getX()) - 1][n.getLocation().getY()]);
-    }
-    neighbors++;
-    if (((n.getLocation().getY()) + 1) < 10) {
-        neighbors = &(graph[n.getLocation().getX()][(n.getLocation().getY()) + 1]);
-    }
-    neighbors++;
-    if(((n.getLocation().getX()) + 1) < 10) {
-        neighbors = &(graph[(n.getLocation().getX()) + 1][(n.getLocation().getY())]);
-    }
-    neighbors++;
-    if((n.getLocation().getY()) - 1 >=0) {
-        neighbors = &(graph[(n.getLocation().getX())][(n.getLocation().getY()) - 1]);
+void BFS::visitNeighbors(Node& n) { //TODO this belongs to graph, not BFS
 
-    }
-    //Node* nodePtr = createNeighbors(n);
+    Node* neighbors = (*(graph)).getNeighbors(&n);
     int i;
-    for ( i = 0; i < 4; i++) {
+    for ( i = 0; i < sizeof(neighbors); i++) {
         if (!(neighbors[i].isVisited())) {
             neighbors[i].visit();
+            neighbors[i].setPrev(n); //TODO do anyway
+            myQueue.push(neighbors[i]);
+        }
+        else {
             neighbors[i].setPrev(n);
-            myQueue.push(&neighbors[i]);
-            //TODO nodePtr[i].checkDest();
         }
     }
+
+    /*
+    if ((n.getLocation().getX())- 1 >= 0) {
+        neighbors = &(graph[(n.getLocation().getX()) - 1][n.getLocation().getY()]);
+        count++;
+    }
+    if (((n.getLocation().getY()) + 1) < ysize) {
+        neighbors++;
+        neighbors = &(graph[n.getLocation().getX()][(n.getLocation().getY()) + 1]);
+        count++;
+    }
+    if(((n.getLocation().getX()) + 1) < xsize) {
+        neighbors++;
+        neighbors = &(graph[(n.getLocation().getX()) + 1][(n.getLocation().getY())]);
+        count++;
+    }
+    if((n.getLocation().getY()) - 1 >= 0) {
+        neighbors++;
+        neighbors = &(graph[(n.getLocation().getX())][(n.getLocation().getY()) - 1]);
+    } */
+
 }
 
-Node* BFS::createNeighbors(Node n) {
+/*Node* BFS::createNeighbors(Node n) {
     Node neighbors[4];
     //bool onXBorder = false;
     //bool onYBorder = false;
@@ -94,13 +103,4 @@ Node* BFS::createNeighbors(Node n) {
 
     //TODO check which border and add neighbors accordingly
     return neighbors;
-}
-
-
-
-//Source.
-//Visit neighbors, and add to queue -- function for this
-//Check if reached destination
-//update prev of all neighbors
-//dequeue source
-//Replace source with next in queue
+}*/

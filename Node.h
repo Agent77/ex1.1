@@ -6,22 +6,22 @@
 #define EX1_NODE_H
 #include "Node.h"
 #include "Point.h"
+#include "Coordinate.h"
 
 
 class Node {
-
 private:
-    Point myLocation = Point(0,0);
+    Coordinate* myLocation;
     Node* prev;
     bool visited = false;
 public:
     Node();
-    Node(Point p);
+    Node(Coordinate c);
     bool isVisited();
     void visit();
     Node* getPrev();
-    void setPrev(Node &p);
-    Point getLocation();
+    void setPrev(Node& n);
+    Coordinate* getLocation();
 };
 
 #endif //EX1_NODE_H

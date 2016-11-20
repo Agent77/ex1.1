@@ -17,11 +17,12 @@ ostream& operator<<(ostream& output, Point& p) {
     output << "(" << p.getX() << "," << p.getY() << ")";
     return output;
 }
-bool operator== (Point const& p1, Point const& p2) {
-    return ((p1.getX() == p2.getX()) && (p1.getY() == p2.getY()));
-
+//bool operator== (Coordinate* const& p1, Coordinate* const& p2) {
+//    return ((p1.getX() == p2.getX()) && (p1.getY() == p2.getY()));
+//}
+bool Point::equalTo(Coordinate* c) {
+        return (x == (*(c)).getX()) && (y == (*(c)).getY());
 }
-
 int Point::getY() const {
     return y;
 }

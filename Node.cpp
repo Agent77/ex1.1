@@ -6,12 +6,12 @@
 using namespace std;
 
 Node::Node() {
-    myLocation = Point(0,0);
+
 }
-Node::Node(Point p) {
-    myLocation = Point(p.getX(), p.getY());
+Node::Node(Coordinate p) {
+    myLocation = &p;
 }
-Point Node::getLocation() {
+Coordinate* Node::getLocation() {
     return myLocation;
 }
 bool Node::isVisited() {
@@ -23,6 +23,6 @@ void Node::visit() {
 Node* Node::getPrev() {
     return prev;
 }
-void Node::setPrev(Node& p) {
-    prev = &p;
+void Node::setPrev(Node& n) {
+    prev = &n;
 }
