@@ -33,6 +33,7 @@ void BFS::PrintPath( Node source, Node destination) {
 }
 void BFS::getPath() {
     Node* newSource;
+    Coordinate *c1, *c2;
     myQueue.push(source);
     newSource = &myQueue.front();
     do {
@@ -42,7 +43,9 @@ void BFS::getPath() {
         }
         newSource = &myQueue.front();
          //Points to next Node in queue
-} while(!((*(newSource)).getLocation()->equalTo(destination.getLocation())));
+        *c1=*newSource->getLocation();
+        *c2=*destination.getLocation();
+} while(!(c1->equalTo(c2)));
 BFS::PrintPath(source, destination);
 
 }
