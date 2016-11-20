@@ -14,18 +14,18 @@ using namespace std;
 class BFS {
 private:
     std::queue<Node> myQueue;
-    int* xsize;
-    int* ysize;
+    int xsize;
+    int ysize;
     Node source;
     Graph* graph;
     Node destination = source;
     //Node* createNeighbors(Node n);
 public:
-    BFS(int x, int y, Coordinate source, Coordinate destination);
+    BFS(int x, int y, Coordinate *source, Coordinate *destination);
     void getPath();
     void PrintPath(Node s, Node d);
     void visitNeighbors(Node& n);
-    void setGraph(Graph g);
+    void setGraph(Graph *g);
 
 };
 

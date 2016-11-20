@@ -7,6 +7,7 @@
 #include "Node.h"
 #include "Point.h"
 #include "Graph.h"
+#include <string.h>
 
 class Grid : public Graph {
 private:
@@ -15,6 +16,7 @@ public:
     Grid(int sizeX, int sizeY);
     Node* getLocationOfPrev(Node* n);
     Node* getNeighbors(Node* node);
+    void print();
 
 };
 

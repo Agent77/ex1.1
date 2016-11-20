@@ -8,8 +8,8 @@ using namespace std;
 Node::Node() {
 
 }
-Node::Node(Coordinate p) {
-    myLocation = &p;
+Node::Node(Coordinate *p) {
+    myLocation = p;
 }
 Coordinate* Node::getLocation() {
     return myLocation;

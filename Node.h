@@ -13,10 +13,10 @@ class Node {
 private:
     Coordinate* myLocation;
     Node* prev;
-    bool visited = false;
+    bool visited;
 public:
     Node();
-    Node(Coordinate c);
+    Node(Coordinate* c);
     bool isVisited();
     void visit();
     Node* getPrev();

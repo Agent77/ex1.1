@@ -9,7 +9,7 @@ Grid::Grid(int sizeX, int sizeY) {
         for (int j = 0; j < sizeY; j++) {
             Point p = Point(i,j);
             Node* n;
-            Node node = Node(p);
+            Node node = Node(&p);
             n = &(node);
             grid[i][j] = n;
         }
@@ -22,9 +22,14 @@ Node* Grid::getLocationOfPrev(Node* n) {
     return node;
 }
 
+void Grid::print(){
+    std::cout<<"sup? i'm grid";
+}
+
 Node* Grid::getNeighbors(Node* n) {
     Node* neighbors;
     Coordinate* c = n->getLocation();
+    c->print();
     if ((*(c)).getX()- 1 >= 0) {
         neighbors = (grid[((*(c)).getX()) - 1][(*(c)).getY()]);
     }

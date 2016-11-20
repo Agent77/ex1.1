@@ -2,17 +2,17 @@
 
 using namespace std;
 
-BFS::BFS(int x, int y, Coordinate s, Coordinate d) {
-    xsize = &x;
-    ysize = &y;
+BFS::BFS(int x, int y, Coordinate *s, Coordinate *d) {
+    xsize = x;
+    ysize = y;
     source = Node(s);
     source.visit();
     destination = Node(d);
     Node node = Node();
     source.setPrev(node);
 }
-void BFS::setGraph(Graph g) {//Set based off of input
-    graph = &g;
+void BFS::setGraph(Graph *g) {//Set based off of input
+    graph = g;
 }
 
 void BFS::PrintPath( Node source, Node destination) {
@@ -46,8 +46,8 @@ void BFS::getPath() {
 BFS::PrintPath(source, destination);
 
 }
-void BFS::visitNeighbors(Node& n) { //TODO this belongs to graph, not BFS
-
+void BFS::visitNeighbors(Node& n) {//TODO this belongs to graph, not BFS
+    (graph)->print();
     Node* neighbors = (*(graph)).getNeighbors(&n);
     int i;
     for ( i = 0; i < sizeof(neighbors); i++) {

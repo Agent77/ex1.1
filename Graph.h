@@ -12,6 +12,7 @@ public:
     Graph(){};
     virtual Node* getLocationOfPrev(Node* n) {};
     virtual Node* getNeighbors(Node* n){};
+    virtual void print()=0;
 };
 
 

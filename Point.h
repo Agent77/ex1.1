@@ -17,5 +17,6 @@ public:
     //friend bool operator== (Coordinate* const& p1, Coordinate* const& p);
     int getX() const;
     int getY() const;
+    void print();
 };
 #endif //EXONE_POINT_H

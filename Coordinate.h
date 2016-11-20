@@ -13,6 +13,7 @@ public:
     virtual int getX() const = 0;
     virtual int getY() const = 0;
     virtual bool equalTo(Coordinate* c) = 0;
+    virtual void print()=0;
 //    friend bool operator== (Coordinate* const& p1, Coordinate* const& p) {return 0;};
 
 

@@ -13,6 +13,10 @@ Point::Point(int xAxis, int yAxis) {
     y = yAxis;
 }
 
+void Point::print(){
+    std::cout<<"i'm point!";
+}
+
 ostream& operator<<(ostream& output, Point& p) {
     output << "(" << p.getX() << "," << p.getY() << ")";
     return output;
