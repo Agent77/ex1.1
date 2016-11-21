@@ -6,11 +6,11 @@
 using namespace std;
 
 Node::Node() {
-    visited=false;
+    visited = false;
 }
 Node::Node(Coordinate *p) {
     myLocation = p;
-    visited=false;
+    visited = false;
 }
 Coordinate* Node::getLocation() {
     return myLocation;
@@ -24,6 +24,6 @@ void Node::visit() {
 Node* Node::getPrev() {
     return prev;
 }
-void Node::setPrev(Node& n) {
-    prev = &n;
+void Node::setPrev(Node* n) {
+    prev = n;
 }

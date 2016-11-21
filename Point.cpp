@@ -9,8 +9,11 @@ Point::Point() {
 
 }
 Point::Point(int xAxis, int yAxis) {
-    x = xAxis;
-    y = yAxis;
+    //TODO CHANGES MADE
+    locs[0] = xAxis;
+    locs[1] = yAxis;
+    //x = xAxis;
+    //y = yAxis;
 }
 
 void Point::print(){
@@ -28,10 +31,32 @@ bool Point::equalTo(Coordinate *c) {
     Point* p=(Point *) c;
         return (x == ((*p).getX()) && (y == ((*p).getY())));
 }
-int Point::getY() const {
+int Point::getY() {
     return y;
 }
 
-int Point::getX() const {
+Point::Point(Coordinate *cor) { //TODO changes made
+    int size = sizeof(locs)/4;
+    for(int i = 0; i< size; i++) {
+        locs[i] = cor->getNextCoordinate(i);
+    }
+    //this->x = cor->getX();
+    //this->y = cor->getY();
+}
+int Point::getNextCoordinate(int place) {
+    return locs[place];
+}
+
+int Point::getX() {
     return x;
+}
+
+void Point::subclassPrint() {
+    std::cout<<"IM A POINT!"<<std::endl;
+}
+
+Coordinate* Point::getCoordinates() {
+    Point p = Point(x, y);
+    return &p;
+
 }

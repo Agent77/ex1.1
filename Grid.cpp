@@ -4,46 +4,61 @@
 
 #include "Grid.h"
 
-Grid::Grid(int sizeX, int sizeY) {
-    for(int i = 0; i < sizeX; i++) {
+Grid::Grid(int xSize, int ySize) {
+    sizeX = xSize;
+    sizeY = ySize;
+    for (int i = 0; i < sizeX; i++) {
         for (int j = 0; j < sizeY; j++) {
-            Point p = Point(i,j);
-            Node* n;
-            Node node = Node(&p);
-            n = &(node);
-            grid[i][j] = n;
+            Point* p = new Point(i, j); //Creates a point
+            Node* node =  new Node(p); //Node
+            arrayOfPtrsToNodes[i][j] = *node;
         }
     }
 }
 
 Node* Grid::getLocationOfPrev(Node* n) {
-    Coordinate* c = n->getPrev()->getLocation();
-    Node* node = grid[((*(c)).getX())][(*(c)).getY()];
-    return node;
+    Node* prevNode = n->getPrev();
+    return prevNode;
 }
 
 void Grid::print(){
     std::cout<<"sup? i'm grid";
 }
 
-Node* Grid::getNeighbors(Node* n) {
+Node* Grid::getNeighbors(Node n) {
     Node* neighbors;
-    Coordinate* c = n->getLocation();
-    c->print();
-    if ((*(c)).getX()- 1 >= 0) {
-        neighbors = (grid[((*(c)).getX()) - 1][(*(c)).getY()]);
+    Coordinate* p = (n.getLocation());
+    Point point(p);
+    //Does same exact thing, but much more generic!!!!!!!
+    Coordinate* code = p->getCoordinates();
+    Point point2(code);
+    int count = -1;
+    int x = (point.getX());
+    int y = (point.getY());
+    if ((x - 1) >= 0) {
+        count++;
+        neighbors[count] = arrayOfPtrsToNodes[(point.getX()) - 1][(point).getY()];
+        neighbors->visit();
+        neighbors->setPrev(&n);
     }
-    if ((((*(c)).getY()) + 1) < 10) {
-        neighbors++;
-        neighbors = (grid[(*(c)).getX()][((*(c)).getY()) + 1]);
+    if (y + 1 < sizeY) {
+        count++;
+        neighbors[count] = arrayOfPtrsToNodes[(point).getX()][(point).getY() + 1];
+        neighbors->visit();
+        neighbors->setPrev(&n);
     }
-    if((((*(c)).getX()) + 1) < 10) {
-        neighbors++;
-        neighbors = (grid[((*(c)).getX()) + 1][((*(c)).getY())]);
+    if((x + 1) < sizeX) {
+        count++;
+        neighbors[count] = arrayOfPtrsToNodes[(point).getX() + 1][(point).getY()];
+        neighbors->visit();
+        neighbors->setPrev(&n);
     }
-    if(((*(c)).getY()) - 1 >= 0) {
-        neighbors++;
-        neighbors = (grid[((*(c)).getX())][((*(c)).getY()) - 1]);
+    if((y - 1) >= 0) {
+        count++;
+        neighbors[count] = arrayOfPtrsToNodes[point.getX()][point.getY() - 1];
+        neighbors->visit();
+        neighbors->setPrev(&n);
     }
+
     return neighbors;
 }

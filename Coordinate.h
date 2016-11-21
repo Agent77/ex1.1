@@ -8,12 +8,24 @@
 
 class Coordinate {
 public:
-     Coordinate();
-    ~Coordinate();
-    virtual int getX() const = 0;
-    virtual int getY() const = 0;
-    virtual bool equalTo(Coordinate* c) = 0;
-    virtual void print()=0;
+     Coordinate(){};
+    ~Coordinate(){};
+    virtual Coordinate* getCoordinates(){};
+    virtual int getX();
+    virtual int getY();
+    void print() { subclassPrint();};
+    virtual void subclassPrint(){};
+    virtual int getNextCoordinate(int place){};
+   // virtual void setX(int x) = 0;
+   // virtual void setY(int y) = 0;
+    //void printIt();
+    virtual bool equalTo(Coordinate* c) {};
+private:
+    int* coordinates;
+    int x;
+    int y;
+
+    //virtual void print() = 0;
 //    friend bool operator== (Coordinate* const& p1, Coordinate* const& p) {return 0;};
 
 

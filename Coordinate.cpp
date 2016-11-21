@@ -3,21 +3,5 @@
 //
 
 #include "Coordinate.h"
-
-Coordinate::Coordinate() {
-
-}
-int Coordinate::getX() const {
-
-}
-int Coordinate::getY() const {
-
-}
-
-Coordinate::~Coordinate() {
-
-}
-
-bool Coordinate::equalTo(Coordinate* c) {
-
-}
+int Coordinate::getX() {return this->x;}
+int Coordinate::getY() {return this->y;}

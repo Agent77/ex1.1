@@ -15,12 +15,13 @@ private:
     Node* prev;
     bool visited;
 public:
+    Node* neighbors;
     Node();
     Node(Coordinate* c);
     bool isVisited();
     void visit();
     Node* getPrev();
-    void setPrev(Node& n);
+    void setPrev(Node* n);
     Coordinate* getLocation();
 };
 

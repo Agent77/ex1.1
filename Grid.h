@@ -11,11 +11,13 @@
 
 class Grid : public Graph {
 private:
-    Node* grid[10][10];
+    Node arrayOfPtrsToNodes[3][3];
+    int sizeX;
+    int sizeY;
 public:
     Grid(int sizeX, int sizeY);
     Node* getLocationOfPrev(Node* n);
-    Node* getNeighbors(Node* node);
+    Node* getNeighbors(Node node);
     void print();
 
 };
