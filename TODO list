@@ -1,0 +1,6 @@
+- Finish converting any "getX()" to loop for each coordinate
+- Create parser for input
+    -Must check how many points put in
+- Overloads for prints/== for Coordinate
+- Finish UML
+- Get some sleep.
