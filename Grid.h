@@ -17,7 +17,7 @@ private:
 public:
     Grid(int sizeX, int sizeY);
     Node* getLocationOfPrev(Node* n);
-    Node* getNeighbors(Node node);
+    Node** getNeighbors(Node* node);
     void print();
     Node* getNode(Coordinate* p);
 

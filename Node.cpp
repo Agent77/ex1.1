@@ -24,6 +24,12 @@ void Node::visit() {
 Node* Node::getPrev() {
     return prev;
 }
-void Node::setPrev(Node* n) {
-    prev = n;
+void Node::setPrev(Node& n) {
+        prev = &n;
+}
+int Node::numOfNeighbors() {
+    return neighborCount;
+}
+void Node::setNumOfNeighbors( int count) {
+    neighborCount = count;
 }

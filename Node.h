@@ -14,6 +14,7 @@ private:
     Coordinate* myLocation;
     Node* prev;
     bool visited;
+    int neighborCount;
 public:
     Node* neighbors;
     Node();
@@ -21,8 +22,10 @@ public:
     bool isVisited();
     void visit();
     Node* getPrev();
-    void setPrev(Node* n);
+    void setPrev(Node& n);
     Coordinate* getLocation();
+    int numOfNeighbors();
+    void setNumOfNeighbors(int count);
 };
 
 #endif //EX1_NODE_H
