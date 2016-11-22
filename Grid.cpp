@@ -9,9 +9,11 @@ Grid::Grid(int xSize, int ySize) {
     sizeY = ySize;
     for (int i = 0; i < sizeX; i++) {
         for (int j = 0; j < sizeY; j++) {
-            Point* p = new Point(i, j); //Creates a point
-            Node* node =  new Node(p); //Node
-            arrayOfPtrsToNodes[i][j] = *node;
+            Point* p;
+            p = new Point(i, j);
+            Node* n;
+            n = new Node(p);//Creates a point
+            arrayOfPtrsToNodes[i][j] = n;
         }
     }
 }
@@ -37,28 +39,32 @@ Node* Grid::getNeighbors(Node n) {
     int y = (point.getY());
     if ((x - 1) >= 0) {
         count++;
-        neighbors[count] = arrayOfPtrsToNodes[(point.getX()) - 1][(point).getY()];
+        neighbors[count] = *arrayOfPtrsToNodes[(point.getX()) - 1][(point).getY()];
         neighbors->visit();
         neighbors->setPrev(&n);
     }
     if (y + 1 < sizeY) {
         count++;
-        neighbors[count] = arrayOfPtrsToNodes[(point).getX()][(point).getY() + 1];
+        neighbors[count] = *arrayOfPtrsToNodes[(point).getX()][(point).getY() + 1];
         neighbors->visit();
         neighbors->setPrev(&n);
     }
     if((x + 1) < sizeX) {
         count++;
-        neighbors[count] = arrayOfPtrsToNodes[(point).getX() + 1][(point).getY()];
+        neighbors[count] = *arrayOfPtrsToNodes[(point).getX() + 1][(point).getY()];
         neighbors->visit();
         neighbors->setPrev(&n);
     }
     if((y - 1) >= 0) {
         count++;
-        neighbors[count] = arrayOfPtrsToNodes[point.getX()][point.getY() - 1];
+        neighbors[count] = *arrayOfPtrsToNodes[point.getX()][point.getY() - 1];
         neighbors->visit();
         neighbors->setPrev(&n);
     }
-
     return neighbors;
+}
+
+Node* Grid::getNode(Coordinate* p){
+    Node* node = (arrayOfPtrsToNodes[p->getNextCoordinate(0)][p->getNextCoordinate(1)]);
+    return node;
 }

@@ -16,12 +16,12 @@ private:
     std::deque<Node> myDeque;
     int xsize;
     int ysize;
-    Node source;
+    Node* source;
     Graph* graph;
-    Node destination = source;
+    Node* destination = source;
     //Node* createNeighbors(Node n);
 public:
-    BFS(Graph* g, int x, int y, Coordinate source, Coordinate destination);
+    BFS(Graph* g, int x, int y, Coordinate* source, Coordinate* destination);
     void getPath();
     void PrintPath(Node s, Node d);
     void visitNeighbors(Node n);

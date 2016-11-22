@@ -9,7 +9,7 @@ Point::Point() {
 
 }
 Point::Point(int xAxis, int yAxis) {
-    //TODO CHANGES MADE
+    //TODO Can be for all points
     locs[0] = xAxis;
     locs[1] = yAxis;
     //x = xAxis;
@@ -32,7 +32,7 @@ bool Point::equalTo(Coordinate *c) {
         return (x == ((*p).getX()) && (y == ((*p).getY())));
 }
 int Point::getY() {
-    return y;
+    return locs[1];
 }
 
 Point::Point(Coordinate *cor) { //TODO changes made
@@ -48,7 +48,7 @@ int Point::getNextCoordinate(int place) {
 }
 
 int Point::getX() {
-    return x;
+    return locs[0];
 }
 
 void Point::subclassPrint() {
@@ -56,7 +56,10 @@ void Point::subclassPrint() {
 }
 
 Coordinate* Point::getCoordinates() {
-    Point p = Point(x, y);
-    return &p;
+    Point* p = new Point(locs[0], locs[1]);
+    return p;
+
+}
+Point::~Point() {
 
 }

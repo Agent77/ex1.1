@@ -9,11 +9,11 @@ Node::Node() {
     visited = false;
 }
 Node::Node(Coordinate *p) {
-    myLocation = p;
+    myLocation = p->getCoordinates();
     visited = false;
 }
-Coordinate* Node::getLocation() {
-    return myLocation;
+Coordinate* Node::getLocation() {//TODO changes made here now
+    return myLocation->getCoordinates();
 }
 bool Node::isVisited() {
     return visited;

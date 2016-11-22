@@ -12,11 +12,10 @@ int main() {
     //test.run();
     Point p = Point(0,0);
     Point p2 = Point(1,2);
-    p2.print();
     Graph* graphPointer;
     Grid g = Grid(3, 3);
     graphPointer = &g;
-    BFS bfs = BFS(graphPointer, 3, 3, p, p2);
+    BFS bfs = BFS(graphPointer, 3, 3, &p, &p2);
     bfs.setGraph(graphPointer);
     bfs.getPath();
     return 0;

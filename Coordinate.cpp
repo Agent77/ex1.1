@@ -3,5 +3,8 @@
 //
 
 #include "Coordinate.h"
-int Coordinate::getX() {return this->x;}
-int Coordinate::getY() {return this->y;}
+//int Coordinate::getX() {return this->x;}
+//int Coordinate::getY() {return this->y;}
+int Coordinate::getNextCoordinate(int i) {
+    return locs[i];
+}

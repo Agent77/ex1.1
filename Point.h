@@ -11,6 +11,7 @@ private:
     int locs[2];
 public:
     Point();
+    ~Point();
     Point(int xAxis, int yAxis);
     friend std::ostream &operator<<(std::ostream& out, Point&);
     bool equalTo(Coordinate* c);

@@ -2,14 +2,14 @@
 
 using namespace std;
 
-BFS::BFS(Graph* g, int x, int y, Coordinate s, Coordinate d) {
+BFS::BFS(Graph* g, int x, int y, Coordinate* sLoc, Coordinate* dLoc) {
     xsize = x;
     ysize = y;
-    source = Node(&s);
-    source.visit();
-    destination = Node(&d);
-    Node node = Node();
-    source.setPrev(&node);
+    source =  g->getNode(sLoc);
+    (*(source)).visit();
+    destination = new Node(dLoc);
+    //Node node = Node();
+    //source.setPrev(&node);
     graph = g;
 }
 void BFS::setGraph(Graph *g) {//Set based off of input
@@ -35,8 +35,8 @@ void BFS::getPath() {
     Node* newSource;
     Coordinate *c1;
     Coordinate *c2;
-    myDeque.push_front(source);
-    newSource = &source;
+    myDeque.push_front(*source);
+    newSource = source; //TODO doesnt work...
     do {
         visitNeighbors(*newSource);
         if (!myDeque.empty()) {
@@ -45,9 +45,9 @@ void BFS::getPath() {
         *newSource = myDeque.front();
          //Points to next Node in queue
         c1= (*(newSource)).getLocation();
-        c2= destination.getLocation();
+        c2= (*(destination)).getLocation();
 } while(!(c2->equalTo(c1)));//TODO make sure this works
-BFS::PrintPath(source, destination);
+BFS::PrintPath(*source, *destination);
 
 }
 void BFS::visitNeighbors(Node n) {

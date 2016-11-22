@@ -11,7 +11,7 @@
 
 class Grid : public Graph {
 private:
-    Node arrayOfPtrsToNodes[3][3];
+    Node* arrayOfPtrsToNodes[3][3];
     int sizeX;
     int sizeY;
 public:
@@ -19,6 +19,7 @@ public:
     Node* getLocationOfPrev(Node* n);
     Node* getNeighbors(Node node);
     void print();
+    Node* getNode(Coordinate* p);
 
 };
 
