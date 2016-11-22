@@ -7,7 +7,7 @@ BFS::BFS(Graph* g, int x, int y, Coordinate* sLoc, Coordinate* dLoc) {
     ysize = y;
     source =  g->getNode(sLoc);
     (*(source)).visit();
-    destination = new Node(dLoc);
+    destination = g->getNode(dLoc);
     //Node node = Node();
     //source.setPrev(&node);
     graph = g;

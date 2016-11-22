@@ -12,7 +12,7 @@ Node::Node(Coordinate *p) {
     myLocation = p->getCoordinates();
     visited = false;
 }
-Coordinate* Node::getLocation() {//TODO changes made here now
+Coordinate* Node::getLocation() {
     return myLocation->getCoordinates();
 }
 bool Node::isVisited() {
