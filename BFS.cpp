@@ -35,14 +35,14 @@ void BFS::getPath() {
     Node* newSource;
     Coordinate *c1;
     Coordinate *c2;
-    myDeque.push_front(*source);
-    newSource = source; //TODO doesnt work...
+    myDeque.push(source);
+    newSource = source;
     do {
         visitNeighbors(*newSource);
         if (!myDeque.empty()) {
-            myDeque.pop_front();
+            myDeque.pop();
         }
-        *newSource = myDeque.front();
+        newSource = myDeque.front();
          //Points to next Node in queue
         c1= (*(newSource)).getLocation();
         c2= (*(destination)).getLocation();
@@ -56,7 +56,7 @@ void BFS::visitNeighbors(Node n) {
     int size = (int)sizeof(neighbors)/4;
     for ( i = 0; i < size; i++) {
         if (!(neighbors[i].isVisited())) {
-            myDeque.push_back(neighbors[i]);
+            myDeque.push(&neighbors[i]);
         }
         else {
             neighbors[i].setPrev(&n);

@@ -13,7 +13,7 @@
 using namespace std;
 class BFS {
 private:
-    std::deque<Node> myDeque;
+    std::queue<Node*> myDeque;
     int xsize;
     int ysize;
     Node* source;
