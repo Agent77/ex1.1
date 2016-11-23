@@ -1,4 +1,5 @@
 #include "Grid.h"
+#include "Node.h"
 /*
  * The constructor initializes the grid with new Nodes,
  * which contain a Point of their location within
@@ -22,11 +23,12 @@ Grid::Grid(int xSize, int ySize) {
  * we arrived at our current Node.
  */
 Node* Grid::getLocationOfPrev(Node* n) {
-    Node* prev;
+   /* Node* prev;
     prev = arrayOfPtrsToNodes[n->getPrev()->getLocation()->getCoordinates()->getNextCoordinate(0)]
     [n->getPrev()->getLocation()->getCoordinates()->getNextCoordinate(1)];
-    //prevNode = &node;//Node* prevNode =  new Node(*(n->getPrev()));
-    return prev;
+    //prevNode = &node;//*/
+    Node* prevNode =  new Node(*(n->getPrev()));
+    return prevNode;
 }
 
 /*
