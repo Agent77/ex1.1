@@ -1,10 +1,12 @@
+/*
+ * The main class of the project, is in charge of parsing the input and creating the relevant
+ * objects. then calling the method of the BFS in order to get the right path.
+ */
+
 #include <iostream>
 #include "Point.h"
 #include "BFS.h"
-#include "Node.h"
-#include "Graph.h"
-#include "Grid.h"
-#include "TestPointerArray.h"
+
 using namespace std;
 
 int main() {
@@ -22,12 +24,12 @@ int main() {
     int endX = *input - 48;
     input+=2;
     int endY = *input - 48;
-    Point p = Point(startX,startY);
+    Point p1 = Point(startX,startY);
     Point p2 = Point(endX,endY);
     Graph* graphPointer;
     Grid g = Grid(xSize, ySize);
     graphPointer = &g;
-    BFS bfs = BFS(graphPointer, xSize, ySize, &p, &p2);
+    BFS bfs = BFS(graphPointer, xSize, ySize, &p1, &p2);
     bfs.getPath();
     return 0;
 }

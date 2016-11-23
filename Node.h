@@ -5,6 +5,11 @@
 #include "Point.h"
 #include "Coordinate.h"
 
+/*
+ * Node is a class that represents each object on the grid. it has a reference to the node that
+ * we came from on the grid, it's location and a member that says whether it has been visited
+ * on the grid or not.
+ */
 
 class Node {
 private:
