@@ -5,6 +5,10 @@
 #include <vector>
 #include "Node.h"
 
+/*
+ * Graph is an abstract class which represents any kind of diagram. it has the abstract methods
+ * for the diagram that are in charge of providing the information needed.
+ */
 class Graph {
 public:
     Graph(){};
