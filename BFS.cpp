@@ -9,11 +9,11 @@ using namespace std;
 BFS::BFS(Graph* g, int x, int y, Coordinate* sLoc, Coordinate* dLoc) {
     xsize = x;
     ysize = y;
-    source =  g->getNode(sLoc);
+    this->source =  g->getNode(sLoc);
     (*(source)).visit();
     (*(source)).setPrev(*source);
-    destination = g->getNode(dLoc);
-    graph = g;
+    this->destination = g->getNode(dLoc);
+    this->graph = g;
 }
 /*
  * Prints the path from Source to Destination by
@@ -24,7 +24,7 @@ void BFS::PrintPath( Node* source, Node* destination) {
     Coordinate* path[100] = {};
     int count = 0;
     Node* currentNode = destination;
-    int* a = ((*(currentNode)).getLocation());
+    //int* a = ((*(currentNode)).getLocation());
     Coordinate* c = ((*(currentNode)).getMyLocation());
     path[count] = c;
     count++;
@@ -44,11 +44,16 @@ void BFS::PrintPath( Node* source, Node* destination) {
         currentNode = n;
     } while(!(currentNode->getMyLocation()->equalTo(source->getMyLocation())));
 
-    for(int i = count; i >= 0; i--) {
+    Point p(path[count]);
+    cout<<p;
+    for(int i = count - 1; i >= 0; i--) {
         Point p(path[i]);
-        cout << p << endl;
+        cout<<endl;
+        cout << p;
+
     }
-        graph->deleteGraph();
+    cout<<endl;
+    graph->deleteGraph();
 }
 
 /*
@@ -92,7 +97,6 @@ void BFS::visitNeighbors(Node* n) {
         v++;
     }
 }
-
 BFS::~BFS() {
 
 }

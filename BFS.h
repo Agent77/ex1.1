@@ -21,7 +21,7 @@ private:
     int ysize;
     Node* source;
     Graph* graph;
-    Node* destination = source;
+    Node* destination;
 public:
     BFS(){};
     ~BFS();
