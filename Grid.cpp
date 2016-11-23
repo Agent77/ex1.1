@@ -23,7 +23,8 @@ Grid::Grid(int xSize, int ySize) {
  */
 Node* Grid::getLocationOfPrev(Node* n) {
     Node* prevNode;
-    prevNode = arrayOfPtrsToNodes[n->getPrev()->getLocation()->getCoordinates()->getX()][n->getPrev()->getLocation()->getCoordinates()->getY()];
+    prevNode = arrayOfPtrsToNodes[n->getPrev()->getLocation()->getCoordinates()->getNextCoordinate(0)]
+    [n->getPrev()->getLocation()->getCoordinates()->getNextCoordinate(1)];
     //prevNode = &node;//Node* prevNode =  new Node(*(n->getPrev()));
     return prevNode;
 }
