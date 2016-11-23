@@ -24,21 +24,25 @@ void BFS::PrintPath( Node* source, Node* destination) {
     Coordinate* path[100] = {};
     int count = 0;
     Node* currentNode = destination;
-    path[count] = ((*(currentNode)).getLocation());
+    int* a = ((*(currentNode)).getLocation());
+    Coordinate* c = ((*(currentNode)).getMyLocation());
+    path[count] = c;
     count++;
     Node* n;
     do {
          n = ((*(graph)).getLocationOfPrev(currentNode));
         //Will break from loop if arrived back at source
-        if (n->getLocation()->equalTo(source->getLocation())) {
-            path[count] = n->getLocation();
+        //int* node = n->getLocation();
+        //int* source1 = source->getLocation(
+        if (n->getMyLocation()->equalTo(source->getMyLocation())) {
+            path[count] = n->getMyLocation();
             break;
         }
-        path[count] = n->getLocation();
+        path[count] = n->getMyLocation();
         count++;
         //n is the previous currentNode's 'previous'
         currentNode = n;
-    } while(!(currentNode->getLocation()->equalTo(source->getLocation())));
+    } while(!(currentNode->getMyLocation()->equalTo(source->getMyLocation())));
 
     for(int i = count; i >= 0; i--) {
         Point p(path[i]);
@@ -64,8 +68,8 @@ void BFS::getPath() {
             myDeque.pop();
         }
         newSource = myDeque.front();
-        c1 = (*(newSource)).getLocation();
-        c2 = (*(destination)).getLocation();
+        c1 = (*(newSource)).getMyLocation();
+        c2 = (*(destination)).getMyLocation();
 } while(!(c2->equalTo(c1)));
 BFS::PrintPath(source, destination);
 }

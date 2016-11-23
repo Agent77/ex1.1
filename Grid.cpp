@@ -41,9 +41,9 @@ Node* Grid::getLocationOfPrev(Node* n) {
 std::vector<Node*> Grid::getNeighbors(Node* n) {
     //Vector to return with neighbors inside
     std::vector<Node*> neighbors;
-    Coordinate* p = (*(n)).getLocation();
+    int* p = (*(n)).getLocation();
     //Copy constructor to convert the generic Coordinate to type Point
-    Point point(p);
+    Point point(p[0], p[1]);
     int x = (point.getX());
     int y = (point.getY());
     //Left border of grid

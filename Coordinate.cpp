@@ -11,3 +11,7 @@
 int Coordinate::getNextCoordinate(int i) {
     return locs[i];
 }
+Coordinate::Coordinate(Coordinate* p) {
+    locs[0] = p->locs[0];
+    locs[1] = p->locs[1];
+}

@@ -73,11 +73,18 @@ int Point::getNextCoordinate(int place) {
  * Returns a generic Coordinate with the locations of
  * the Point.
  */
-Coordinate* Point::getCoordinates() {
-    Point* p = new Point(locs[0], locs[1]);
-    return p;
+int* Point::getCoordinates() {
+    return locs;
+    //Point* p = new Point(locs[0], locs[1]);
+    //return p;
 
 }
+Coordinate* Point::getMyLocation() {
+    Point* point = new Point(locs[0], locs[1]);
+    //Point* p = &point;
+    return point;
+}
+
 
 /*
  * Destructor for Point class.

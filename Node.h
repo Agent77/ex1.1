@@ -25,7 +25,8 @@ public:
     void visit();
     Node* getPrev();
     void setPrev(Node& n);
-    Coordinate* getLocation();
+    int* getLocation();
+    Coordinate* getMyLocation();
 };
 
 #endif //EX1_NODE_H

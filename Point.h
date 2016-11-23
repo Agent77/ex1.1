@@ -10,7 +10,7 @@
  * 2, for x and y, so is used for 2D graphs.
  */
 class Point: public Coordinate {
-private:
+protected:
     int locs[2];
 public:
     Point();
@@ -20,9 +20,10 @@ public:
     bool equalTo(Coordinate* c);
     friend bool operator== (Point const& p, Point const& p2);
     int getX();
-    Coordinate* getCoordinates();
+    int* getCoordinates();
     Point(Coordinate* cor);
     int getY();
     int getNextCoordinate(int place);
+    Coordinate* getMyLocation();
 };
 #endif //EXONE_POINT_H

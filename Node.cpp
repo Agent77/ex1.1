@@ -13,14 +13,17 @@ Node::Node() {
  * info and sets the visited member to false.
  */
 Node::Node(Coordinate *p) {
-    myLocation = p->getCoordinates();
+    //int* a = p->getCoordinates();
+    myLocation = p->getMyLocation();
+    //myLocation = p->getCoordinates();
     visited = false;
 }
 /*
  * getLocation returns the coordinates of the node.
  */
-Coordinate* Node::getLocation() {
+int* Node::getLocation() {
     return myLocation->getCoordinates();
+    //return myLocation->getCoordinates();
 }
 /*
  * isVisited returns the value of the member visited. the value would be true if this node has been
@@ -50,4 +53,8 @@ void Node::setPrev(Node& n) {
 }
 Node::~Node() {
 
+}
+
+Coordinate* Node::getMyLocation() {
+    return myLocation;
 }
