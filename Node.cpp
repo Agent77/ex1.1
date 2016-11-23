@@ -27,9 +27,4 @@ Node* Node::getPrev() {
 void Node::setPrev(Node& n) {
         prev = &n;
 }
-int Node::numOfNeighbors() {
-    return neighborCount;
-}
-void Node::setNumOfNeighbors( int count) {
-    neighborCount = count;
-}
+

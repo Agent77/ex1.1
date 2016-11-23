@@ -1,7 +1,5 @@
-//
-// Created by Tiki Lobel on 11/17/16.
-//
-#include <iostream>
+
+
 #include "Point.h"
 
 using namespace std;
@@ -9,24 +7,15 @@ Point::Point() {
 
 }
 Point::Point(int xAxis, int yAxis) {
-    //TODO Can be for all points
     locs[0] = xAxis;
     locs[1] = yAxis;
-    //x = xAxis;
-    //y = yAxis;
-}
-
-void Point::print(){
-    std::cout<<"i'm point!";
 }
 
 ostream& operator<<(ostream& output, Point& p) {
     output << "(" << p.getX() << "," << p.getY() << ")";
     return output;
 }
-//bool operator== (Coordinate* const& p1, Coordinate* const& p2) {
-//    return ((p1.getX() == p2.getX()) && (p1.getY() == p2.getY()));
-//}
+
 bool Point::equalTo(Coordinate *c) {
     Point point(c);
     bool equal =  (locs[0] == (point.getX()) && (locs[1] == (point.getY())));
@@ -41,8 +30,6 @@ Point::Point(Coordinate *cor) { //TODO changes made
     for(int i = 0; i< size; i++) {
         locs[i] = cor->getNextCoordinate(i);
     }
-    //this->x = cor->getX();
-    //this->y = cor->getY();
 }
 int Point::getNextCoordinate(int place) {
     return locs[place];
@@ -50,10 +37,6 @@ int Point::getNextCoordinate(int place) {
 
 int Point::getX() {
     return locs[0];
-}
-
-void Point::subclassPrint() {
-    std::cout<<"IM A POINT!"<<std::endl;
 }
 
 Coordinate* Point::getCoordinates() {

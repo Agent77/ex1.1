@@ -1,6 +1,3 @@
-//
-// Created by Tiki Lobel on 11/20/16.
-//
 
 #ifndef EX1_GRAPH_H
 #define EX1_GRAPH_H

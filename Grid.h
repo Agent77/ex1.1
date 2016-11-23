@@ -1,6 +1,3 @@
-//
-// Created by Tiki Lobel on 11/20/16.
-//
 
 #ifndef EX1_GRID_H
 #define EX1_GRID_H
@@ -8,6 +5,7 @@
 #include "Point.h"
 #include "Graph.h"
 #include <string.h>
+#include <vector>
 
 class Grid : public Graph {
 private:
@@ -18,7 +16,6 @@ public:
     Grid(int sizeX, int sizeY);
     Node* getLocationOfPrev(Node* n);
     std::vector<Node*> getNeighbors(Node* node);
-    void print();
     Node* getNode(Coordinate* p);
 
 };

@@ -7,7 +7,6 @@
 
 class Point: public Coordinate {
 private:
-    int x, y;
     int locs[2];
 public:
     Point();
@@ -17,11 +16,9 @@ public:
     bool equalTo(Coordinate* c);
     friend bool operator== (Point const& p, Point const& p2);
     int getX();
-    void subclassPrint();
     Coordinate* getCoordinates();
     Point(Coordinate* cor);
     int getY();
-    void print();
     int getNextCoordinate(int place);
 };
 #endif //EXONE_POINT_H
