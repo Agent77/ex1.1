@@ -48,4 +48,6 @@ Node* Node::getPrev() {
 void Node::setPrev(Node& n) {
         prev = &n;
 }
+Node::~Node() {
 
+}

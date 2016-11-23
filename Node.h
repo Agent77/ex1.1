@@ -19,6 +19,7 @@ private:
 public:
     Node* neighbors;
     Node();
+    ~Node();
     Node(Coordinate* c);
     bool isVisited();
     void visit();

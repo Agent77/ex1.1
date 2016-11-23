@@ -87,3 +87,15 @@ Node* Grid::getNode(Coordinate* p){
     Node* node = (arrayOfPtrsToNodes[p->getNextCoordinate(0)][p->getNextCoordinate(1)]);
     return node;
 }
+Grid::~Grid() {
+}
+
+void Grid::deleteGraph() {
+    for (int i = 0; i < sizeX; i++) {
+        for (int j = 0; j < sizeY; j++) {
+            Node* n = arrayOfPtrsToNodes[i][j];
+            //TODO delete new points
+            delete n;
+        }
+    }
+}

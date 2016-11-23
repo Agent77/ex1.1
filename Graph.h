@@ -12,9 +12,11 @@
 class Graph {
 public:
     Graph(){};
+    ~Graph(){};
     virtual Node* getLocationOfPrev(Node* n) {};
     virtual std::vector<Node*> getNeighbors(Node* n)=0;
     virtual Node* getNode(Coordinate* p){};
+    virtual void deleteGraph() {};
 };
 
 

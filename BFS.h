@@ -23,6 +23,8 @@ private:
     Graph* graph;
     Node* destination = source;
 public:
+    BFS(){};
+    ~BFS();
     BFS(Graph* g, int x, int y, Coordinate* source, Coordinate* destination);
     void getPath();
     void PrintPath(Node* s, Node* d);

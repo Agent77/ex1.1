@@ -42,8 +42,9 @@ void BFS::PrintPath( Node* source, Node* destination) {
 
     for(int i = count; i >= 0; i--) {
         Point p(path[i]);
-        cout<<p<<endl;
+        cout << p << endl;
     }
+        graph->deleteGraph();
 }
 
 /*
@@ -86,4 +87,8 @@ void BFS::visitNeighbors(Node* n) {
         }
         v++;
     }
+}
+
+BFS::~BFS() {
+
 }

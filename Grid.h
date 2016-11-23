@@ -20,10 +20,13 @@ private:
     int sizeX;
     int sizeY;
 public:
+    Grid(){};
+    ~Grid();
     Grid(int sizeX, int sizeY);
     Node* getLocationOfPrev(Node* n);
     std::vector<Node*> getNeighbors(Node* node);
     Node* getNode(Coordinate* p);
+    void deleteGraph();
 
 };
 #endif //EX1_GRID_H
