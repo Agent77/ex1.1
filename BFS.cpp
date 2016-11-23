@@ -30,7 +30,6 @@ void BFS::PrintPath( Node* source, Node* destination) {
     count++;
     Node* n;
     do {
-
          n = ((*(graph)).getLocationOfPrev(currentNode));
         //Will break from loop if arrived back at source
         //int* node = n->getLocation();

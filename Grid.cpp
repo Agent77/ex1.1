@@ -101,6 +101,7 @@ void Grid::deleteGraph() {
         for (int j = 0; j < sizeY; j++) {
             Node* n = arrayOfPtrsToNodes[i][j];
             //TODO delete new points
+            delete n->getMyLocation();
             delete n;
         }
     }

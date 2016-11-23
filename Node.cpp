@@ -45,6 +45,7 @@ void Node::visit() {
 Node* Node::getPrev() {
     return prev;
 }
+
 /*
  * setPrev sets the previous node of the current one at first time it's visited.
  */
