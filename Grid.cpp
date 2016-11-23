@@ -27,8 +27,9 @@ Node* Grid::getLocationOfPrev(Node* n) {
     prev = arrayOfPtrsToNodes[n->getPrev()->getLocation()->getCoordinates()->getNextCoordinate(0)]
     [n->getPrev()->getLocation()->getCoordinates()->getNextCoordinate(1)];
     //prevNode = &node;//*/
-    Node* prevNode =  new Node(*(n->getPrev()));
-    return prevNode;
+    Node* prev = n->getPrev();
+    //Node* prevNode =  new Node(*(n->getPrev()));
+    return prev;
 }
 
 /*
