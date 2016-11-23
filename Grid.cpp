@@ -39,46 +39,58 @@ std::vector<Node*> Grid::getNeighbors(Node* n) {
     int x = (point.getX());
     int y = (point.getY());
     if ((x - 1) >= 0) {
-        count++;
          Node* node = (arrayOfPtrsToNodes[(point.getX()) - 1][(point).getY()]);
-       int xx= node->getLocation()->getNextCoordinate(0);
-        int yy = node->getLocation()->getNextCoordinate(1);
-        node->setPrev(*n);
-        neighbors.push_back(node);
+       //int xx= node->getLocation()->getNextCoordinate(0);
+       // int yy = node->getLocation()->getNextCoordinate(1);
+        if(!(node->isVisited())){
+            count++;
+            node->setPrev(*n);
+            neighbors.push_back(node);
+        }
         //neighbors[count] = node;
         //neighbors[count]->setPrev(*n);
     }
     if (y + 1 < sizeY) {
-        count++;
+
         Node* node = (arrayOfPtrsToNodes[(point).getX()][(point).getY() + 1]);
-        node->setPrev(*n);
-        neighbors.push_back(node);
+        if(!(node->isVisited())){
+            count++;
+            node->setPrev(*n);
+            neighbors.push_back(node);
+        }
+
         //neighbors[count] = node;
         //neighbors[count]->setPrev(*n);
         //neighbors++;
 
     }
     if((x + 1) < sizeX) {
-        count++;
         Node* node = arrayOfPtrsToNodes[(point).getX() + 1][(point).getY()];
-        node->setPrev(*n);
-        neighbors.push_back(node);
+        if(!(node->isVisited())){
+            count++;
+            node->setPrev(*n);
+            neighbors.push_back(node);
+        }
+
       //  neighbors[count] = node;
        // neighbors[count]->setPrev(*n);
     }
     if((y - 1) >= 0) {
-        count++;
+
         Node* node = arrayOfPtrsToNodes[point.getX()][point.getY() - 1];
-        node->setPrev(*n);
-        neighbors.push_back(node);
+        if(!(node->isVisited())){
+            count++;
+            node->setPrev(*n);
+            neighbors.push_back(node);
+        }
      //   neighbors[count] = node;
       //  neighbors[count]->setPrev(*n);
     }
     n->setNumOfNeighbors(count + 1);
     //Node* nodeptr = &n;
     //(*(nodeptr)).setNumOfNeighbors(count + 1);
-    int xxx=neighbors[count]->getLocation()->getNextCoordinate(0);
-    int yyy=neighbors[count]->getLocation()->getNextCoordinate(1);
+//    int xxx=neighbors[count]->getLocation()->getNextCoordinate(0);
+    //int yyy=neighbors[count]->getLocation()->getNextCoordinate(1);
     return neighbors;
 }
 

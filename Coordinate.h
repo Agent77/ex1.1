@@ -5,7 +5,9 @@
 #ifndef EX1_COORDINATE_H
 #define EX1_COORDINATE_H
 
+#include <iostream>
 
+using namespace std;
 class Coordinate {
 public:
      Coordinate(){};
@@ -16,6 +18,7 @@ public:
     void print() { subclassPrint();};
     virtual void subclassPrint(){};
     virtual int getNextCoordinate(int place);
+    friend std::ostream &operator<<(std::ostream& out, Coordinate&){};
    // virtual void setX(int x) = 0;
    // virtual void setY(int y) = 0;
     //void printIt();

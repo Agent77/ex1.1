@@ -28,8 +28,9 @@ ostream& operator<<(ostream& output, Point& p) {
 //    return ((p1.getX() == p2.getX()) && (p1.getY() == p2.getY()));
 //}
 bool Point::equalTo(Coordinate *c) {
-    Point* p=(Point *) c;
-        return (x == ((*p).getX()) && (y == ((*p).getY())));
+    Point point(c);
+    bool equal =  (locs[0] == (point.getX()) && (locs[1] == (point.getY())));
+    return equal;
 }
 int Point::getY() {
     return locs[1];

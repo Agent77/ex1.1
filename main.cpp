@@ -8,15 +8,28 @@
 using namespace std;
 
 int main() {
-    //TestPointerArray test = TestPointerArray();
-    //test.run();
-    Point p = Point(1,0);
-    Point p2 = Point(1,2);
+
+    char* input;
+    cin>>input;
+    int xSize = *input - 48;
+    input+=2;
+    int ySize = *input - 48;
+    input+=2;
+    int startX = *input - 48;
+    input+=2;
+    int startY = *input - 48;
+    input+=2;
+    int endX = *input - 48;
+    input+=2;
+    int endY = *input - 48;
+    Point p = Point(startX,startY);
+    Point p2 = Point(endX,endY);
     Graph* graphPointer;
-    Grid g = Grid(3, 3);
+    Grid g = Grid(xSize, ySize);
     graphPointer = &g;
-    BFS bfs = BFS(graphPointer, 3, 3, &p, &p2);
-    //bfs.setGraph(graphPointer);
+    BFS bfs = BFS(graphPointer, xSize, ySize, &p, &p2);
     bfs.getPath();
     return 0;
 }
+
+

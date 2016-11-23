@@ -13,7 +13,6 @@ public:
     Graph(){};
     virtual Node* getLocationOfPrev(Node* n) {};
     virtual std::vector<Node*> getNeighbors(Node* n)=0;
-    virtual void print()=0;
     virtual Node* getNode(Coordinate* p){};
 };
 

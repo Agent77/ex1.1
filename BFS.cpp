@@ -14,26 +14,36 @@ BFS::BFS(Graph* g, int x, int y, Coordinate* sLoc, Coordinate* dLoc) {
     graph = g;
 }
 
-void BFS::PrintPath( Node source, Node destination) {
+void BFS::PrintPath( Node* source, Node* destination) {
     Coordinate* path[100] = {};
     int count = 0;
-    Node* currentNode = &destination;
+    Node* currentNode = destination;
     path[count] = ((*(currentNode)).getLocation());
     count++;
-    while (!(((*(currentNode)).getLocation()->equalTo(source.getLocation())))) {
-        Node n = *((*(graph)).getLocationOfPrev(currentNode));
-        currentNode = &n;
-        path[count] = (*(currentNode)).getLocation();
+    Node* n;
+    //When we get to source, add and then exit
+    do {
+         n = ((*(graph)).getLocationOfPrev(currentNode));
+        if (n->getLocation()->equalTo(source->getLocation())) {
+            path[count] = n->getLocation();
+            break;
+        }
+        path[count] = n->getLocation();
         count++;
-    }
-    for(int i = count - 1; i >= 0; i--) {
-        //cout<<path[i]<<endl;
+        currentNode = n;
+    } while(!(currentNode->getLocation()->equalTo(source->getLocation())));
+
+    //while (!(((*(currentNode)).getLocation()->equalTo(source->getLocation())))) {
+    for(int i = count; i >= 0; i--) {
+        Point p(path[i]);
+        cout<<p<<endl;
     }
 }
 void BFS::getPath() {
     Node* newSource;
     Coordinate *c1;
     Coordinate *c2;
+    Node* prev;
     myDeque.push(source);
     newSource = source;
     do {
@@ -43,13 +53,23 @@ void BFS::getPath() {
             std::cout<<"next one";
             std::cout<<myDeque.front()->getLocation()->getNextCoordinate(0);
             std::cout<<myDeque.front()->getLocation()->getNextCoordinate(1)<<std::endl;
+            std::cout<<"Prev:";
+            std::cout<<myDeque.front()->getPrev()->getLocation()->getNextCoordinate(0);
+            std::cout<<myDeque.front()->getPrev()->getLocation()->getNextCoordinate(1)<<std::endl;
         }
+        //if(newSource->getLocation()->equalTo(destination->getLocation())) {
+          //  destination->setPrev(*newSource);
+            //break;
+        //}
+
         newSource = myDeque.front();
          //Points to next Node in queue
         c1 = (*(newSource)).getLocation();
         c2= (*(destination)).getLocation();
 } while(!(c2->equalTo(c1)));//TODO make sure this works
-BFS::PrintPath(*source, *destination);
+    //visitNeighbors(destination);
+    //destination->setPrev(*prev);
+BFS::PrintPath(source, destination);
 
 }
 void BFS::visitNeighbors(Node* n) {
@@ -71,9 +91,10 @@ void BFS::visitNeighbors(Node* n) {
         if (!(*(*v)).isVisited()){
             (*(*v)).visit();
             myDeque.push((*v));
-        } else{
-            (*(*v)).setPrev(*n);
         }
+        //else{
+           // (*(*v)).setPrev(*n);
+        //}
         v++;
     }
 }

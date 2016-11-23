@@ -11,7 +11,7 @@
 
 class Grid : public Graph {
 private:
-    Node* arrayOfPtrsToNodes[3][3];
+    Node* arrayOfPtrsToNodes[10][10];
     int sizeX;
     int sizeY;
 public:
