@@ -3,7 +3,12 @@
 #define EX1_COORDINATE_H
 
 #include <iostream>
-
+/*
+ * Abstract class to represent an objects location,
+ * based on any number of coordinates given, using an
+ * array of locations (x,y,z,etc...). This allows
+ * us to handle any dimension wanted by the user.
+ */
 using namespace std;
 class Coordinate {
 public:

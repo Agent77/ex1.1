@@ -9,7 +9,10 @@
 #include "Graph.h"
 #include "Grid.h"
 
-
+/*
+ * Class which performs the Breadth-First Search on any given graph/diagram.
+ * It contains the graph, start, and end-point, in Node pointer form.
+ */
 using namespace std;
 class BFS {
 private:

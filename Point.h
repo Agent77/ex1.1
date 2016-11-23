@@ -4,7 +4,11 @@
 #define EX1_POINT_H
 #include <iostream>
 #include "Coordinate.h"
-
+/*
+ * Point class is a specific implementation of
+ * the Coordinate abstract class. It has an array of size
+ * 2, for x and y, so is used for 2D graphs.
+ */
 class Point: public Coordinate {
 private:
     int locs[2];
