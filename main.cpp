@@ -1,5 +1,5 @@
 /*
- * The main class of the project, is in charge of parsing the input and creating the relevant
+ * The main class of the project is in charge of parsing the input and creating the relevant
  * objects. then calling the method of the BFS in order to get the right path.
  */
 
