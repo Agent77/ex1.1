@@ -16,7 +16,7 @@ public:
     Point();
     ~Point();
     Point(int xAxis, int yAxis);
-    friend std::ostream &operator<<(std::ostream& out, Point&);
+    void printFormat(ostream& o);
     bool equalTo(Coordinate* c);
     friend bool operator== (Point const& p, Point const& p2);
     int getX();

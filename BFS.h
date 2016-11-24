@@ -8,6 +8,7 @@
 #include <queue>
 #include "Graph.h"
 #include "Grid.h"
+#include "Coordinate.h"
 
 /*
  * Class which performs the Breadth-First Search on any given graph/diagram.

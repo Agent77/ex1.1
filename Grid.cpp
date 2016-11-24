@@ -12,7 +12,7 @@ Grid::Grid(int xSize, int ySize) {
         for (int j = 0; j < sizeY; j++) {
             Point p = Point(i, j);
             Node* n;
-            n = new Node(&p);//Creates a point
+            n = new Node(&p);
             arrayOfPtrsToNodes[i][j] = n;
         }
     }
@@ -23,12 +23,7 @@ Grid::Grid(int xSize, int ySize) {
  * we arrived at our current Node.
  */
 Node* Grid::getLocationOfPrev(Node* n) {
-   /* Node* prev;
-    prev = arrayOfPtrsToNodes[n->getPrev()->getLocation()->getCoordinates()->getNextCoordinate(0)]
-    [n->getPrev()->getLocation()->getCoordinates()->getNextCoordinate(1)];
-    //prevNode = &node;//*/
     Node* prev = n->getPrev();
-    //Node* prevNode =  new Node(*(n->getPrev()));
     return prev;
 }
 
@@ -93,14 +88,21 @@ Node* Grid::getNode(Coordinate* p){
     Node* node = (arrayOfPtrsToNodes[p->getNextCoordinate(0)][p->getNextCoordinate(1)]);
     return node;
 }
+
+/*
+ * destructor for Grid.
+ */
 Grid::~Grid() {
 }
 
+/*
+ * Goes through each node which was created with 'new' command
+ * and deletes their Location Point and themselves.
+ */
 void Grid::deleteGraph() {
     for (int i = 0; i < sizeX; i++) {
         for (int j = 0; j < sizeY; j++) {
             Node* n = arrayOfPtrsToNodes[i][j];
-            //TODO delete new points
             delete n->getMyLocation();
             delete n;
         }

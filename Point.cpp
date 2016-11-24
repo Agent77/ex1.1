@@ -8,6 +8,7 @@ using namespace std;
 Point::Point() {
 
 }
+
 /*
  * Constructor which receives two points and
  * inserts into the Coordinate array.
@@ -21,9 +22,8 @@ Point::Point(int xAxis, int yAxis) {
  * Overload for print operator, which prints the Point
  * in a specific format.
  */
-ostream& operator<<(ostream& output, Point& p) {
-    output << "(" << p.getX() << "," << p.getY() << ")";
-    return output;
+void Point::printFormat(ostream& o) {
+    o << "(" << locs[0] << "," << locs[1] << ")";
 }
 
 /*
@@ -75,16 +75,11 @@ int Point::getNextCoordinate(int place) {
  */
 int* Point::getCoordinates() {
     return locs;
-    //Point* p = new Point(locs[0], locs[1]);
-    //return p;
-
 }
 Coordinate* Point::getMyLocation() {
     Point* point = new Point(locs[0], locs[1]);
-    //Point* p = &point;
     return point;
 }
-
 
 /*
  * Destructor for Point class.

@@ -14,15 +14,10 @@ int main() {
     char input[12];
     cin>>input;
     int xSize = input[0] - 48;
-    //input+=2;
     int ySize = input[2] - 48;
-    //input+=2;
     int startX = input[4] - 48;
-    //input+=2;
     int startY = input[6] - 48;
-    //input+=2;
     int endX = input[8] - 48;
-    //input+=2;
     int endY = input[10] - 48;
     Point p1 = Point(startX,startY);
     Point p2 = Point(endX,endY);

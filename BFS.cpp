@@ -6,6 +6,8 @@ using namespace std;
  * on input, and sets the BFS graph to the graph object
  * that was sent.
  */
+
+
 BFS::BFS(Graph* g, int x, int y, Coordinate* sLoc, Coordinate* dLoc) {
     xsize = x;
     ysize = y;
@@ -24,35 +26,25 @@ void BFS::PrintPath( Node* source, Node* destination) {
     Coordinate* path[100] = {};
     int count = 0;
     Node* currentNode = destination;
-    //int* a = ((*(currentNode)).getLocation());
     Coordinate* c = ((*(currentNode)).getMyLocation());
     path[count] = c;
     count++;
     Node* n;
     do {
          n = ((*(graph)).getLocationOfPrev(currentNode));
-        //Will break from loop if arrived back at source
-        //int* node = n->getLocation();
-        //int* source1 = source->getLocation(
         if (n->getMyLocation()->equalTo(source->getMyLocation())) {
             path[count] = n->getMyLocation();
             break;
         }
         path[count] = n->getMyLocation();
         count++;
-        //n is the previous currentNode's 'previous'
         currentNode = n;
     } while(!(currentNode->getMyLocation()->equalTo(source->getMyLocation())));
 
-    Point p(path[count]);
-    cout<<p;
-    for(int i = count - 1; i >= 0; i--) {
-        Point p(path[i]);
+    for(int i = count; i >= 0; i--) {
+        cout<<*path[count];
         cout<<endl;
-        cout << p;
-
     }
-    cout<<endl;
     graph->deleteGraph();
 }
 
@@ -100,3 +92,4 @@ void BFS::visitNeighbors(Node* n) {
 BFS::~BFS() {
 
 }
+

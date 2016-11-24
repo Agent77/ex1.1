@@ -8,23 +8,23 @@ using namespace std;
 Node::Node() {
     visited = false;
 }
+
 /*
  * The constructor gets a coordinate object, initializes my location member to be with the given
  * info and sets the visited member to false.
  */
 Node::Node(Coordinate *p) {
-    //int* a = p->getCoordinates();
     myLocation = p->getMyLocation();
-    //myLocation = p->getCoordinates();
     visited = false;
 }
+
 /*
  * getLocation returns the coordinates of the node.
  */
 int* Node::getLocation() {
     return myLocation->getCoordinates();
-    //return myLocation->getCoordinates();
 }
+
 /*
  * isVisited returns the value of the member visited. the value would be true if this node has been
  * visited on the grid and false otherwise.
@@ -47,7 +47,8 @@ Node* Node::getPrev() {
 }
 
 /*
- * setPrev sets the previous node of the current one at first time it's visited.
+ * setPrev sets the previous node
+ * of the current one at first time it's visited.
  */
 void Node::setPrev(Node& n) {
         prev = &n;
