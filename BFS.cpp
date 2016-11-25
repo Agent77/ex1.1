@@ -42,7 +42,7 @@ void BFS::PrintPath( Node* source, Node* destination) {
     } while(!(currentNode->getMyLocation()->equalTo(source->getMyLocation())));
 
     for(int i = count; i >= 0; i--) {
-        cout<<*path[count];
+        cout<<*path[i];
         cout<<endl;
     }
     graph->deleteGraph();
