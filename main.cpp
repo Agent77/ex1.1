@@ -10,18 +10,22 @@
 #include "BFS.h"
 
 using namespace std;
+int toInt(char* s);
 
 int main() {
 
     int variables[7];
-    char * input;
+    char * input = new char();
     cin>>input;
     input = strtok(input, "_");
     for (int i = 0; i < 6; i++) {
-        string s = input;
-        variables[i] = std::atoi(input);
+        if (input != NULL) {
+            variables[i] = toInt(input);
+        }
         //Goes to next place where there is a '_' and splits
-        input = strtok(NULL, "_,");
+        if (input != NULL) {
+            input = strtok(NULL, "_,");
+        }
     }
     Point start = Point(variables[2],variables[3]);
     Point end = Point(variables[4],variables[5]);
@@ -35,4 +39,20 @@ int main() {
     return 0;
 }
 
+/*
+ * converts the char to an int.
+ */
+int toInt(char* s) {
+    //Could be 10
+    if(*s - 48 == 1) {
+        s++;
+        if(*s - 48 == 0) {
+            return 10;
+        }
+        else {
+            return 1;
+        }
+    }
+    return *s - 48;
+}
 
